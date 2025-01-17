@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: notes-app
-        image: sonbarse17/demo-project:latest
+        image: sonbarse17/demo-project
         ports:
         - containerPort: 8000
