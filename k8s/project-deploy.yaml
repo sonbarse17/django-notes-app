@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: notes-app-deployment
-  namespace: notes-app
   labels:
     app: notes-app
+  namespace: notes-app
 spec:
   replicas: 1
   selector:
@@ -17,6 +17,18 @@ spec:
     spec:
       containers:
       - name: notes-app
-        image: sonbarse17/demo-project
+        image: trainwithshubham/notes-app-k8s
         ports:
         - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          
